@@ -8,7 +8,7 @@ O teste deve ser feito aqui github através de um fork desse repositório e ser 
 
 1. API JSON RESTful
 
-Desenvolver uma API em Node.js utiliazando o framework Express com o CRUD de um modelo de Usuário. Para a persistência dos dados pode ser utilizado qualquer banco de dados, arquivo ou memória. Utilizar MongoDB é um Bônus🏅.
+Desenvolver uma API em Node.js utilizando o framework Express com o CRUD de um modelo de Usuário. Para a persistência dos dados pode ser utilizado qualquer banco de dados, arquivo ou memória. Utilizar MongoDB é um Bônus🏅.
 
 Deve ser utilizado os métodos HTTP GET, POST, PUT, PATCH e DELETE.
 
