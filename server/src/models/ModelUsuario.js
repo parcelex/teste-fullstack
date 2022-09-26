@@ -1,28 +1,28 @@
-import mongoose from "mongoose"
+import mongoose from 'mongoose';
 
 const UsuarioSchema = new mongoose.Schema(
-    {
-        id: 
-            { 
-                type: String 
-            }, 
-        nome: {
-            type: String,
-            required: true
-        }, 
-        email: {
-            type: String,
-            required: true
-        },
-        data_nascimento: {
-            type: Date,
-            required: true
-        }
+  {
+    id:
+            {
+              type: String,
+            },
+    nome: {
+      type: String,
+      required: true,
     },
-    {
-        versionKey: false,
-        timestamps: true
-    }
-)
+    email: {
+      type: String,
+      required: true,
+    },
+    dataNascimento: {
+      type: Date,
+      required: true,
+    },
+  },
+  {
+    versionKey: false,
+    timestamps: true,
+  },
+);
 
-export default mongoose.model("usuarios", UsuarioSchema)
+export default mongoose.model('usuarios', UsuarioSchema);

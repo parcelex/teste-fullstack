@@ -14,10 +14,10 @@ function Notes({data, handleDelete}){
         } 
     }
 
-    async function handleSaveDataNascimento(e, data_nascimento) {
-        if(changedDataNascimento && changedDataNascimento != data_nascimento) {
+    async function handleSaveDataNascimento(e, dataNascimento) {
+        if(changedDataNascimento && changedDataNascimento != dataNascimento) {
             await api.patch(`/usuarios/${data._id}`,{
-                data_nascimento: changedDataNascimento,
+                dataNascimento: changedDataNascimento,
             })    
         } 
     }
@@ -45,9 +45,9 @@ function Notes({data, handleDelete}){
                 <textarea 
                     name="cad_dt_nascimento" 
                     id="cad_dt_nascimento" 
-                    defaultValue={data.data_nascimento}
+                    defaultValue={data.dataNascimento}
                     onChange={e => setChangedDataNascimento(e.target.value)}
-                    onBlur={e => handleSaveDataNascimento(e.target, data.data_nascimento)}
+                    onBlur={e => handleSaveDataNascimento(e.target, data.dataNascimento)}
                 />
 
                 <label htmlFor="createdAt">Data de Criação</label>

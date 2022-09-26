@@ -1,7 +1,7 @@
-import mongoose from "mongoose" 
+import mongoose from 'mongoose';
 
-mongoose.connect(`mongodb://mongodb:27017`);
+mongoose.connect('mongodb://mongodb:27017');
 
-let db = mongoose.connection
+const db = mongoose.connection;
 
-export { db }
+export default db;
