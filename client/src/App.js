@@ -11,7 +11,7 @@ import api from './services/api';
 function App() {
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
-  const [dataNascimento, setDataNascimento] = useState('');
+  const [birthDate, setDataNascimento] = useState('');
   const [allUsuarios, setAllUsuarios] = useState([]);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ function App() {
     const response = await api.post('/usuarios', {
       nome,
       email,
-      dataNascimento,
+      birthDate,
     });
 
     setNome('');
@@ -50,12 +50,12 @@ function App() {
     function enableSubmitButton() {
       const btn = document.getElementById('btn_submit');
       btn.style.background = '#FFD3CA';
-      if (nome && email && dataNascimento) {
+      if (nome && email && birthDate) {
         btn.style.background = '#EB8F7A';
       }
     }
     enableSubmitButton();
-  }, [nome, email, dataNascimento]);
+  }, [nome, email, birthDate]);
 
   return (
     // eslint-disable-next-line react/jsx-filename-extension
@@ -86,13 +86,13 @@ function App() {
             />
           </div>
           <div className="input-block">
-            <label htmlFor="dataNascimento">Data de Nascimento</label>
+            <label htmlFor="birthDate">Data de Nascimento</label>
             <input
               type="date"
               required
-              name="dataNascimento"
-              id="dataNascimento"
-              value={dataNascimento}
+              name="birthDate"
+              id="birthDate"
+              value={birthDate}
               onChange={(e) => setDataNascimento(e.target.value)}
             />
           </div>

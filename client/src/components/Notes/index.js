@@ -1,73 +1,71 @@
-import React, { useState } from "react"
-import api from "../../services/api"
+import React, { useState } from 'react';
+import api from '../../services/api';
 
-function Notes({data, handleDelete}){
-    
-    const [ changedEmail, setChangedEmail] = useState()
-    const [ changedDataNascimento, setChangedDataNascimento] = useState()
+function Notes({ data, handleDelete }) {
+  const [changedEmail, setChangedEmail] = useState();
+  const [changedBirthDate, setChangedDataNascimento] = useState();
 
-    async function handleSaveEmail(e, email) {
-        if(changedEmail && changedEmail != email) {
-            await api.patch(`/usuarios/${data._id}`,{
-                email: changedEmail,
-            })    
-        } 
+  async function handleSaveEmail(e, email) {
+    if (changedEmail && changedEmail !== email) {
+      await api.patch(`/usuarios/${data._id}`, {
+        email: changedEmail,
+      });
     }
+  }
 
-    async function handleSaveDataNascimento(e, dataNascimento) {
-        if(changedDataNascimento && changedDataNascimento != dataNascimento) {
-            await api.patch(`/usuarios/${data._id}`,{
-                dataNascimento: changedDataNascimento,
-            })    
-        } 
+  async function handleSaveBirthDate(e, birthDate) {
+    if (changedBirthDate && changedBirthDate !== birthDate) {
+      await api.patch(`/usuarios/${data._id}`, {
+        birthDate: changedBirthDate,
+      });
     }
+  }
 
-    return(
-        <>
-            <li className="notepad-infos">
-                <div>
-                    <strong>{data.nome}</strong>
+  return (
+    // eslint-disable-next-line react/jsx-filename-extension
+    <li className="notepad-infos">
+      <div>
+        <strong>{data.nome}</strong>
 
-                    <div onClick={() => handleDelete(data._id)}>
-                        x
-                    </div>
-                </div>
-                <label htmlFor="cad_email">E-mail</label>
-                <textarea 
-                    name="cad_email" 
-                    id="cad_email" 
-                    defaultValue={data.email}
-                    onChange={e => setChangedEmail(e.target.value)}
-                    onBlur={e => handleSaveEmail(e.target, data.email)}
-                />
+        <div onClick={() => handleDelete(data._id)}>
+          x
+        </div>
+      </div>
+      <label htmlFor="cad_email">E-mail</label>
+      <textarea
+        name="cad_email"
+        id="cad_email"
+        defaultValue={data.email}
+        onChange={(e) => setChangedEmail(e.target.value)}
+        onBlur={(e) => handleSaveEmail(e.target, data.email)}
+      />
 
-                <label htmlFor="cad_dt_nascimento">Data de Nascimento</label>
-                <textarea 
-                    name="cad_dt_nascimento" 
-                    id="cad_dt_nascimento" 
-                    defaultValue={data.dataNascimento}
-                    onChange={e => setChangedDataNascimento(e.target.value)}
-                    onBlur={e => handleSaveDataNascimento(e.target, data.dataNascimento)}
-                />
+      <label htmlFor="cad_birth_date">Data de Nascimento</label>
+      <textarea
+        name="cad_birth_date"
+        id="cad_birth_date"
+        defaultValue={data.birthDate}
+        onChange={(e) => setChangedDataNascimento(e.target.value)}
+        onBlur={(e) => handleSaveBirthDate(e.target, data.birthDate)}
+      />
 
-                <label htmlFor="createdAt">Data de Criação</label>
-                <textarea 
-                    name="createdAt" 
-                    id="createdAt" 
-                    defaultValue={data.createdAt}
-                    readOnly
-                />
+      <label htmlFor="createdAt">Data de Criação</label>
+      <textarea
+        name="createdAt"
+        id="createdAt"
+        defaultValue={data.createdAt}
+        readOnly
+      />
 
-                <label htmlFor="updatedAt">Ultima atualização</label>
-                <textarea 
-                    name="updatedAt" 
-                    id="updatedAt" 
-                    defaultValue={data.updatedAt}
-                    readOnly
-                />
-            </li>
-        </>
-    )
+      <label htmlFor="updatedAt">Ultima atualização</label>
+      <textarea
+        name="updatedAt"
+        id="updatedAt"
+        defaultValue={data.updatedAt}
+        readOnly
+      />
+    </li>
+  );
 }
 
-export default Notes
+export default Notes;

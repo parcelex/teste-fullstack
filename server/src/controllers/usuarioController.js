@@ -15,12 +15,12 @@ async function listUsers(req, res) {
 
 async function registerUser(req, res) {
   try {
-    const date = new Date(`${req.body.dataNascimento}`);
+    const date = new Date(`${req.body.birthDate}`);
 
     const datas = new Users({
       nome: req.body.nome,
       email: req.body.email,
-      dataNascimento: date,
+      birthDate: date,
     });
 
     const newUser = await datas.save();
@@ -51,7 +51,7 @@ async function updateUser(req, res) {
     const novoRegistro = {
       nome: req.body.nome,
       email: req.body.email,
-      dataNascimento: req.body.dataNascimento,
+      birthDate: req.body.birthDate,
     };
 
     const result = await Users.findByIdAndUpdate(req.params.id, novoRegistro);

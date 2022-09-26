@@ -1,12 +1,12 @@
 /* eslint-disable import/extensions */
-import dotenv from 'dotenv';
+// import dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
 import db from './config/db.js';
 import routes from './routes/index.js';
 
 // INSTANCIA VARIÁVEIS DE AMBIENTE
-dotenv.config();
+// dotenv.config();
 
 // INSTANCIA CONEXÃO COM O BANCO
 db.on('error', () => {
