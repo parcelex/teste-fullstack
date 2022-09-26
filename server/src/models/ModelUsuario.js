@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const UsuarioSchema = new mongoose.Schema(
+const UserSchema = new mongoose.Schema(
   {
     id:
             {
@@ -25,4 +25,4 @@ const UsuarioSchema = new mongoose.Schema(
   },
 );
 
-export default mongoose.model('usuarios', UsuarioSchema);
+export default mongoose.model('users', UserSchema);
