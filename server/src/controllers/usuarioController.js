@@ -1,52 +1,52 @@
 /* eslint-disable import/extensions */
-import Usuarios from '../models/ModelUsuario.js';
+import Users from '../models/ModelUsuario.js';
 
-async function listaUsuarios(req, res) {
+async function listUsers(req, res) {
   try {
-    const results = await Usuarios.find({});
+    const results = await Users.find({});
 
-    if (results < 1) return res.status(404).send({ mensagem: 'Nenhum usuário cadastrado' });
+    if (results < 1) return res.status(404).send({ message: 'No registered user' });
 
     return res.status(200).json(results);
   } catch (e) {
-    return res.status(500).send({ mensagem: 'Erro ao realizar a busca de usuários' });
+    return res.status(500).send({ message: 'Error performing user search' });
   }
 }
 
-async function cadastraUsuario(req, res) {
+async function registerUser(req, res) {
   try {
-    const data = new Date(`${req.body.dataNascimento}`);
+    const date = new Date(`${req.body.dataNascimento}`);
 
-    const dados = new Usuarios({
+    const datas = new Users({
       nome: req.body.nome,
       email: req.body.email,
-      dataNascimento: data,
+      dataNascimento: date,
     });
 
-    const novoUsuario = await dados.save();
+    const newUser = await datas.save();
 
     return res.status(201).send({
-      mensagem: 'Usuario criado com sucesso',
-      dados: novoUsuario,
+      message: 'User created',
+      datas: newUser,
     });
   } catch (e) {
-    return res.status(500).send({ mensagem: 'Erro na inclusão do usuário' });
+    return res.status(500).send({ message: 'Erro adding user' });
   }
 }
 
-async function removeUsuario(req, res) {
+async function removeUser(req, res) {
   try {
-    const result = await Usuarios.findByIdAndDelete(req.params.id);
+    const result = await Users.findByIdAndDelete(req.params.id);
 
-    if (!result) return res.status(404).send({ mensagem: 'Nenhum usuário encontrado' });
+    if (!result) return res.status(404).send({ message: 'No users found' });
 
-    return res.status(200).send({ mensagem: 'Registro excluído com sucesso' });
+    return res.status(200).send({ message: 'No users found' });
   } catch (e) {
-    return res.status(500).send({ mensagem: 'Erro ao excluir usuário' });
+    return res.status(500).send({ message: 'Error deleting user' });
   }
 }
 
-async function atualizaUsuario(req, res) {
+async function updateUser(req, res) {
   try {
     const novoRegistro = {
       nome: req.body.nome,
@@ -54,19 +54,19 @@ async function atualizaUsuario(req, res) {
       dataNascimento: req.body.dataNascimento,
     };
 
-    const result = await Usuarios.findByIdAndUpdate(req.params.id, novoRegistro);
+    const result = await Users.findByIdAndUpdate(req.params.id, novoRegistro);
 
-    if (!result) return res.status(404).send({ mensagem: 'Usuário não encontrado' });
+    if (!result) return res.status(404).send({ message: 'User not found' });
 
-    return res.status(200).send({ mensagem: 'Sucesso ao atualizar o registro' });
+    return res.status(200).send({ message: 'Successfully updating record' });
   } catch (e) {
-    return res.status(500).send({ mensagem: 'Erro ao atualizar o registro' });
+    return res.status(500).send({ message: 'Error updating registry' });
   }
 }
 
 export {
-  listaUsuarios,
-  cadastraUsuario,
-  removeUsuario,
-  atualizaUsuario,
+  listUsers,
+  registerUser,
+  removeUser,
+  updateUser,
 };
