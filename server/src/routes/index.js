@@ -1,15 +1,15 @@
-import express from "express"
-import usuarios from "./usuarios.js"
+import express from 'express';
+import usuarios from './users.js';
 
 const routes = (app) => {
-    app.route('/health').get((req, res) => {
-        res.status(200).send({mensagem: "API funcionando perfeitamente"})
-    })
+  app.route('/health').get((req, res) => {
+    res.status(200).send({ message: 'API working pefectly' });
+  });
 
-    app.use(
-        express.json(),
-        usuarios
-    )
-}
+  app.use(
+    express.json(),
+    usuarios,
+  );
+};
 
-export default routes
+export default routes;

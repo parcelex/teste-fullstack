@@ -9,7 +9,7 @@ import Notes from './components/Notes';
 import api from './services/api';
 
 function App() {
-  const [nome, setNome] = useState('');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [birthDate, setDataNascimento] = useState('');
   const [allUsuarios, setAllUsuarios] = useState([]);
@@ -34,12 +34,12 @@ function App() {
 
   async function handleSubmit(e) {
     const response = await api.post('/usuarios', {
-      nome,
+      name,
       email,
       birthDate,
     });
 
-    setNome('');
+    setName('');
     setEmail('');
     setDataNascimento('');
     /* Verificar a atualizaçao da pagina AQUI */
@@ -50,12 +50,12 @@ function App() {
     function enableSubmitButton() {
       const btn = document.getElementById('btn_submit');
       btn.style.background = '#FFD3CA';
-      if (nome && email && birthDate) {
+      if (name && email && birthDate) {
         btn.style.background = '#EB8F7A';
       }
     }
     enableSubmitButton();
-  }, [nome, email, birthDate]);
+  }, [name, email, birthDate]);
 
   return (
     // eslint-disable-next-line react/jsx-filename-extension
@@ -64,14 +64,14 @@ function App() {
         <strong>Cadastro de Usuário</strong>
         <form onSubmit={handleSubmit}>
           <div className="input-block">
-            <label htmlFor="nome">Nome</label>
+            <label htmlFor="name">name</label>
             <input
               type="text"
-              name="nome"
-              id="nome"
+              name="name"
+              id="name"
               required
-              value={nome}
-              onChange={(e) => setNome(e.target.value)}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
           </div>
           <div className="input-block">

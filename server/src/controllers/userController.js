@@ -1,5 +1,5 @@
 /* eslint-disable import/extensions */
-import Users from '../models/ModelUsuario.js';
+import Users from '../models/ModelUser.js';
 
 async function listUsers(req, res) {
   try {
@@ -18,7 +18,7 @@ async function registerUser(req, res) {
     const date = new Date(`${req.body.birthDate}`);
 
     const datas = new Users({
-      nome: req.body.nome,
+      name: req.body.name,
       email: req.body.email,
       birthDate: date,
     });
@@ -49,7 +49,7 @@ async function removeUser(req, res) {
 async function updateUser(req, res) {
   try {
     const novoRegistro = {
-      nome: req.body.nome,
+      name: req.body.name,
       email: req.body.email,
       birthDate: req.body.birthDate,
     };

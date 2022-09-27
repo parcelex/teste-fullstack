@@ -25,7 +25,7 @@ function Notes({ data, handleDelete }) {
     // eslint-disable-next-line react/jsx-filename-extension
     <li className="notepad-infos">
       <div>
-        <strong>{data.nome}</strong>
+        <strong>{data.name}</strong>
 
         <div onClick={() => handleDelete(data._id)}>
           x

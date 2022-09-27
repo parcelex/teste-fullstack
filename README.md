@@ -20,7 +20,7 @@ Para a persistência dos dados pode ser utilizado qualquer coisa até mesmo o lo
 
 Modelo de Usuário
 
-O modelo de usuário deve possuir os seguintes dados: Nome, e-mail, senha, data de nascimento, criado em (data), atualizado em (data). O nome dos campos e tipo de dado fica a seu critério.
+O modelo de usuário deve possuir os seguintes dados: name, e-mail, senha, data de nascimento, criado em (data), atualizado em (data). O name dos campos e tipo de dado fica a seu critério.
 
 <hr>
 

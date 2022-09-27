@@ -10,11 +10,11 @@ import routes from './routes/index.js';
 
 // INSTANCIA CONEXÃO COM O BANCO
 db.on('error', () => {
-  console.log('[CONFIG] - ERRO ao conectar com o banco de dados');
+  console.log('[CONFIG] - Error connecting to database');
 });
 
 db.once('open', () => {
-  console.log('[CONFIG] - SUCESSO ao conectar banco de dados');
+  console.log('[CONFIG] - Success connecting to database');
 });
 
 // INSTANCIA APLICACAO
@@ -24,7 +24,7 @@ const port = 3001;
 app.use(cors());
 
 app.listen(port, () => {
-  console.log('[CONFIG] - SUCESSO ao inicializar o serviço');
+  console.log('[CONFIG] - Success initializing the service');
 });
 
 // CONECTA INDEX ROUTES
