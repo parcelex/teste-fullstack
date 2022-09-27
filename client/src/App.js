@@ -16,7 +16,7 @@ function App() {
 
   useEffect(() => {
     async function getAllUser() {
-      const response = await api.get('/usuarios');
+      const response = await api.get('/users');
 
       setAllUsuarios(response.data);
     }
@@ -25,7 +25,7 @@ function App() {
   }, []);
 
   async function handleDelete(id) {
-    const deleteUser = await api.delete(`/usuarios/${id}`);
+    const deleteUser = await api.delete(`/users/${id}`);
 
     if (deleteUser) {
       setAllUsuarios(allUsuarios.filter((user) => user._id != id));
@@ -33,7 +33,7 @@ function App() {
   }
 
   async function handleSubmit(e) {
-    const response = await api.post('/usuarios', {
+    const response = await api.post('/users', {
       name,
       email,
       birthDate,

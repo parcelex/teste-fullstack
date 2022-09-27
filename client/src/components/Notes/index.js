@@ -7,7 +7,7 @@ function Notes({ data, handleDelete }) {
 
   async function handleSaveEmail(e, email) {
     if (changedEmail && changedEmail !== email) {
-      await api.patch(`/usuarios/${data._id}`, {
+      await api.patch(`/users/${data._id}`, {
         email: changedEmail,
       });
     }
@@ -15,7 +15,7 @@ function Notes({ data, handleDelete }) {
 
   async function handleSaveBirthDate(e, birthDate) {
     if (changedBirthDate && changedBirthDate !== birthDate) {
-      await api.patch(`/usuarios/${data._id}`, {
+      await api.patch(`/users/${data._id}`, {
         birthDate: changedBirthDate,
       });
     }
