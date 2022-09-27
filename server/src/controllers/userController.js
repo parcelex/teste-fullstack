@@ -15,7 +15,7 @@ async function listUsers(req, res) {
 
     return res.status(200).json(results);
   } catch (e) {
-    return res.status(500).send({ message: 'Error performing user search' });
+    return res.status(500).send({ message: `Error searching user >>${e.message}` });
   }
 }
 

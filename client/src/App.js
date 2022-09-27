@@ -11,7 +11,7 @@ import api from './services/api';
 function App() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [birthDate, setDataNascimento] = useState('');
+  const [birthDate, setBirthDay] = useState('');
   const [allUsuarios, setAllUsuarios] = useState([]);
 
   useEffect(() => {
@@ -41,7 +41,7 @@ function App() {
 
     setName('');
     setEmail('');
-    setDataNascimento('');
+    setBirthDay('');
     /* Verificar a atualizaçao da pagina AQUI */
     setAllUsuarios([...allUsuarios, response.data]);
   }
@@ -93,7 +93,7 @@ function App() {
               name="birthDate"
               id="birthDate"
               value={birthDate}
-              onChange={(e) => setDataNascimento(e.target.value)}
+              onChange={(e) => setBirthDay(e.target.value)}
             />
           </div>
           <button id="btn_submit" type="submit">Salvar</button>
