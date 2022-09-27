@@ -54,16 +54,6 @@ O modelo de usuário deve possuir os seguintes dados: name, e-mail, senha, data 
     <li><strike>Nodemon</strike> - dependência de desenvolvimento</li>
 </ul>
 
-### Back - Node JS
-
-<ul>
-    <li>Express</li>
-    <li>Dotenv</li>
-    <li>Cors</li>
-    <li>Mongoose</li>
-    <li><strike>Nodemon</strike> - dependência de desenvolvimento</li>
-</ul>
-
 ### Banco - MongoDB
 <br>
 

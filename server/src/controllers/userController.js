@@ -1,11 +1,17 @@
 /* eslint-disable import/extensions */
-import Users from '../models/ModelUser.js';
+import {
+  serviceListAllUsers,
+  serviceRegisterUser,
+  serviceRemoveUser,
+  serviceUpdateUser,
+} from '../services/userService.js';
+import userValidator from '../validators/userValidator.js';
 
 async function listUsers(req, res) {
   try {
-    const results = await Users.find({});
+    const results = await serviceListAllUsers();
 
-    if (results < 1) return res.status(404).send({ message: 'No registered user' });
+    if (!results) return res.status(404).send({ message: 'No users registered yet' });
 
     return res.status(200).json(results);
   } catch (e) {
@@ -15,52 +21,47 @@ async function listUsers(req, res) {
 
 async function registerUser(req, res) {
   try {
-    const date = new Date(`${req.body.birthDate}`);
+    const data = req.body;
 
-    const datas = new Users({
-      name: req.body.name,
-      email: req.body.email,
-      birthDate: date,
-    });
+    await userValidator.validate(data);
 
-    const newUser = await datas.save();
+    const results = await serviceRegisterUser(data);
 
-    return res.status(201).send({
-      message: 'User created',
-      datas: newUser,
-    });
+    return res.status(200).json(results);
   } catch (e) {
-    return res.status(500).send({ message: 'Erro adding user' });
+    return res.status(500).send({ message: `Error adding user >>${e.message}` });
   }
 }
 
 async function removeUser(req, res) {
   try {
-    const result = await Users.findByIdAndDelete(req.params.id);
+    const { id } = req.params;
 
-    if (!result) return res.status(404).send({ message: 'No users found' });
+    const results = await serviceRemoveUser(id);
 
-    return res.status(200).send({ message: 'No users found' });
+    if (!results) return res.status(404).send({ message: 'User not found' });
+
+    return res.status(200).send(results);
   } catch (e) {
-    return res.status(500).send({ message: 'Error deleting user' });
+    return res.status(500).send({ message: `Error removing user >>${e.message}` });
   }
 }
 
 async function updateUser(req, res) {
   try {
-    const novoRegistro = {
-      name: req.body.name,
-      email: req.body.email,
-      birthDate: req.body.birthDate,
-    };
+    const data = req.body;
 
-    const result = await Users.findByIdAndUpdate(req.params.id, novoRegistro);
+    await userValidator.validate(data);
+
+    const { id } = req.params;
+
+    const result = await serviceUpdateUser(id, data);
 
     if (!result) return res.status(404).send({ message: 'User not found' });
 
     return res.status(200).send({ message: 'Successfully updating record' });
   } catch (e) {
-    return res.status(500).send({ message: 'Error updating registry' });
+    return res.status(500).send({ message: `Error updating user >>${e.message}` });
   }
 }
 
