@@ -1,0 +1,46 @@
+version: '3.4'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongo
+    volumes:
+      - data:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - production-network
+  
+  server:
+    build: ./server
+    container_name: server
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "3001:3001"
+    environment:
+      - MONGO_DB="mongodb://mongodb"
+    links:
+      - mongodb
+    networks:
+      - production-network
+
+  client:
+    build: ./client
+    container_name: client
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "3000:3000"
+    links:
+      - server
+    networks:
+      - production-network
+
+    
+networks: 
+    production-network:
+        driver: bridge
+
+volumes:
+  data: {}
